@@ -10,7 +10,6 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Inter', sans-serif; background: #f4f6f9; color: #1a1f2e; min-height: 100vh; padding: 2.5rem 2rem 4rem; }
   .wrap { max-width: 960px; margin: 0 auto; }
-
   header {
     display: flex; align-items: flex-start; justify-content: space-between;
     margin-bottom: 1.75rem; flex-wrap: wrap; gap: 1rem;
@@ -26,7 +25,6 @@
   .dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
   .dot.error { background: #ef4444; }
   .dot.loading { background: #f59e0b; }
-
   /* MONTH TABS */
   .month-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem; }
   .month-btn {
@@ -36,21 +34,24 @@
   }
   .month-btn:hover { background: #eef2ff; border-color: #c5cff5; color: #3b5bdb; }
   .month-btn.active { background: #3b5bdb; border-color: #3b5bdb; color: #fff; font-weight: 600; }
-
   /* STAT CARDS */
   .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.75rem; }
   .stat-card { background: #fff; border: 1px solid #dde2ed; border-radius: 10px; padding: 1.25rem 1.5rem; border-top: 3px solid #dde2ed; }
+  /* c1 = Total Cases (neutral brand blue, not tied to a status)
+     c2 = Distributed, c3 = Submitted, c4 = Signed — these three now match
+     the pastel Distributed/Submitted/Signed colors used in the sheet's
+     conditional formatting (richened slightly so a 3px border reads
+     clearly on white; the exact pastel is used on the badges below). */
   .stat-card.c1 { border-top-color: #3b5bdb; }
-  .stat-card.c2 { border-top-color: #0ea5e9; }
-  .stat-card.c3 { border-top-color: #f59e0b; }
-  .stat-card.c4 { border-top-color: #10b981; }
+  .stat-card.c2 { border-top-color: #d9534f; } /* Distributed — red family */
+  .stat-card.c3 { border-top-color: #f0c419; } /* Submitted — yellow family */
+  .stat-card.c4 { border-top-color: #7cb894; } /* Signed — green family */
   .stat-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: #6b7591; font-weight: 600; margin-bottom: 0.6rem; }
   .stat-value { font-size: 2.2rem; font-weight: 700; color: #1a1f2e; line-height: 1; }
   .stat-card.c1 .stat-value { color: #3b5bdb; }
-  .stat-card.c2 .stat-value { color: #0ea5e9; }
-  .stat-card.c3 .stat-value { color: #d97706; }
-  .stat-card.c4 .stat-value { color: #10b981; }
-
+  .stat-card.c2 .stat-value { color: #b42318; }
+  .stat-card.c3 .stat-value { color: #92600a; }
+  .stat-card.c4 .stat-value { color: #1f6b3f; }
   /* TABLE */
   .table-section { background: #fff; border: 1px solid #dde2ed; border-radius: 10px; overflow: hidden; margin-bottom: 1rem; }
   .table-header {
@@ -59,7 +60,6 @@
   }
   .table-header h2 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1a1f2e; }
   .tag { font-size: 0.72rem; padding: 3px 10px; border-radius: 4px; background: #eef2ff; color: #3b5bdb; font-weight: 600; }
-
   table { width: 100%; border-collapse: collapse; }
   thead tr { background: #f8f9fc; }
   th { text-align: left; padding: 0.9rem 1.5rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7591; font-weight: 600; border-bottom: 1px solid #dde2ed; }
@@ -69,27 +69,23 @@
   tbody tr:hover { background: #f0f4ff; }
   td { padding: 1rem 1.5rem; vertical-align: middle; }
   td:not(:first-child) { text-align: center; }
-
   .officer-name {
     font-size: 1rem; font-weight: 600; color: #3b5bdb;
     cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
     transition: color 0.15s;
   }
   .officer-name:hover { color: #2244c4; }
-
   .num { font-size: 1rem; font-weight: 600; display: inline-block; min-width: 2.5rem; text-align: center; }
-  .num-pending  { color: #d97706; }
-  .num-finished { color: #10b981; }
+  .num-pending  { color: #92600a; }
+  .num-finished { color: #1f6b3f; }
   .num-total    { color: #3b5bdb; }
   .progress-wrap { display: flex; align-items: center; gap: 10px; justify-content: center; }
   .progress-bar { width: 80px; height: 6px; background: #e8ecf4; border-radius: 99px; overflow: hidden; flex-shrink: 0; }
-  .progress-fill { height: 100%; border-radius: 99px; background: #10b981; transition: width 0.7s ease; }
-
+  .progress-fill { height: 100%; border-radius: 99px; background: #7cb894; transition: width 0.7s ease; }
   .no-data-msg { padding: 3rem 2rem; text-align: center; color: #9ba3be; font-size: 0.9rem; }
   .state-msg { padding: 3rem 2rem; text-align: center; color: #6b7591; font-size: 0.9rem; }
   .spinner { width: 28px; height: 28px; margin: 0 auto 1rem; border: 2px solid #dde2ed; border-top-color: #3b5bdb; border-radius: 50%; animation: spin 0.8s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
-
   /* MODAL */
   .modal-overlay {
     display: none; position: fixed; inset: 0;
@@ -117,7 +113,6 @@
     color: #6b7591; transition: background 0.15s;
   }
   .modal-close:hover { background: #e8ecf4; color: #1a1f2e; }
-
   .modal-tabs { display: flex; border-bottom: 1px solid #dde2ed; flex-shrink: 0; }
   .modal-tab {
     flex: 1; padding: 0.75rem 1rem; text-align: center;
@@ -127,9 +122,8 @@
     transition: all 0.15s; text-transform: uppercase; letter-spacing: 0.06em;
   }
   .modal-tab.active { color: #3b5bdb; border-bottom-color: #3b5bdb; }
-  .modal-tab.tab-pending.active { color: #d97706; border-bottom-color: #d97706; }
-  .modal-tab.tab-done.active { color: #10b981; border-bottom-color: #10b981; }
-
+  .modal-tab.tab-pending.active { color: #92600a; border-bottom-color: #92600a; }
+  .modal-tab.tab-done.active { color: #1f6b3f; border-bottom-color: #1f6b3f; }
   .modal-body { overflow-y: auto; flex: 1; padding: 0; }
   .modal-list { list-style: none; }
   .modal-list li {
@@ -144,26 +138,27 @@
     font-size: 0.72rem; font-weight: 600; padding: 3px 10px;
     border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;
   }
-  .badge-distributed { background: #fff3cd; color: #b45309; }
-  .badge-submitted   { background: #d1fae5; color: #065f46; }
-  .badge-signed      { background: #dbeafe; color: #1e40af; }
+  /* These three match the exact pastel colors used by the "Apply Status
+     Dropdown & Colors" conditional formatting in the CP Database sheet:
+     Distributed = pastel red (#F4CCCC), Submitted = pastel yellow
+     (#FFE599), Signed = pastel green (#B6D7A8). Text is darkened for
+     readability against the pastel background. */
+  .badge-distributed { background: #F4CCCC; color: #8a1f1f; }
+  .badge-submitted   { background: #FFE599; color: #7a5b00; }
+  .badge-signed      { background: #B6D7A8; color: #245c35; }
   .badge-other       { background: #f3f4f6; color: #6b7280; }
-
   .empty-tab { padding: 2.5rem; text-align: center; color: #9ba3be; font-size: 0.88rem; }
-
   .modal-summary {
     display: flex; gap: 1rem; padding: 1rem 1.5rem;
     background: #f8f9fc; border-bottom: 1px solid #dde2ed; flex-shrink: 0;
   }
   .modal-stat { font-size: 0.78rem; color: #6b7591; }
   .modal-stat strong { font-size: 1rem; font-weight: 700; display: block; }
-  .modal-stat.s-pending strong { color: #d97706; }
-  .modal-stat.s-done strong { color: #10b981; }
+  .modal-stat.s-pending strong { color: #92600a; }
+  .modal-stat.s-done strong { color: #1f6b3f; }
   .modal-stat.s-total strong { color: #3b5bdb; }
-
   .last-updated { font-size: 0.75rem; color: #6b7591; text-align: right; margin-bottom: 1.5rem; }
   footer { text-align: center; padding-top: 1.25rem; font-size: 0.75rem; color: #9ba3be; border-top: 1px solid #dde2ed; }
-
   /* ANNOUNCEMENT BANNER */
   .announcement-overlay {
     display: none; position: fixed; inset: 0;
@@ -215,7 +210,6 @@
   }
   .ann-dismiss:hover { background: #2244c4; }
   .ann-empty { padding: 2rem; text-align: center; color: #9ba3be; font-size: 0.88rem; }
-
   @media (max-width: 700px) {
     .stats-row { grid-template-columns: 1fr 1fr; }
     th, td { padding: 0.75rem 1rem; }
@@ -237,16 +231,13 @@
       <span id="statusText">Ready</span>
     </div>
   </header>
-
   <div class="month-nav" id="monthNav"></div>
-
   <div class="stats-row">
     <div class="stat-card c1"><div class="stat-label">Total Cases</div><div class="stat-value" id="totalCases">—</div></div>
     <div class="stat-card c2"><div class="stat-label">Distributed</div><div class="stat-value" id="distributed">—</div></div>
     <div class="stat-card c3"><div class="stat-label">Submitted</div><div class="stat-value" id="submitted">—</div></div>
     <div class="stat-card c4"><div class="stat-label">Signed</div><div class="stat-value" id="signed">—</div></div>
   </div>
-
   <div class="table-section">
     <div class="table-header">
       <h2>Action Officers</h2>
@@ -256,11 +247,9 @@
       <div class="state-msg">Select a month above to view data.</div>
     </div>
   </div>
-
   <div class="last-updated" id="lastUpdated"></div>
   <footer>Auto-refreshes every 60 seconds &nbsp;·&nbsp; Click an officer's name to see their case details</footer>
 </div>
-
 <!-- ANNOUNCEMENT BANNER -->
 <div class="announcement-overlay" id="annOverlay">
   <div class="announcement-box">
@@ -279,7 +268,6 @@
     </div>
   </div>
 </div>
-
 <!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
@@ -302,23 +290,54 @@
     <div class="modal-body" id="modalBody"></div>
   </div>
 </div>
-
 <script>
+/* =====================================================================
+   CONFIG — fill these in from your "(UPDATED) 2026 CP DATABASE" sheet.
+
+   1. Open the sheet > File > Share > Publish to web.
+   2. In the dialog's "Link" dropdown, pick one tab (e.g. "01 - January
+      2026"), set format to "Comma-separated values (.csv)", click
+      Publish, then copy the generated link. It looks like:
+        https://docs.google.com/spreadsheets/d/e/2PACX-xxxxxxx/pub?gid=123456789&single=true&output=csv
+      The long "2PACX-..." part is the SAME for every tab in this
+      spreadsheet — copy that once into PUBLISHED_CSV_BASE below.
+   3. Only the "gid=" number differs per tab. Switch the dropdown to
+      each of the other 11 month tabs, re-publish, and copy just the
+      gid number for each into the MONTHS list below (or find a tab's
+      gid without republishing: click the tab in your normal editing
+      view and look at the URL bar — the number after "#gid=").
+   ===================================================================== */
+
+const PUBLISHED_CSV_BASE = "https://docs.google.com/spreadsheets/d/e/PASTE_YOUR_PUBLISHED_ID_HERE/pub?single=true&output=csv";
+
 const MONTHS = [
-  { label: "April 2026",     summaryUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLyJW3eJIcesJ92qNir7tRLnr7O2cu48rXUV6hhhTgTeicbw36kCeJ90tO8qfyC_d2KfRogC_ce022/pub?gid=585589558&single=true&output=csv",   detailUrl: null },
-  { label: "May 2026",       summaryUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLyJW3eJIcesJ92qNir7tRLnr7O2cu48rXUV6hhhTgTeicbw36kCeJ90tO8qfyC_d2KfRogC_ce022/pub?gid=1916268155&single=true&output=csv",  detailUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLyJW3eJIcesJ92qNir7tRLnr7O2cu48rXUV6hhhTgTeicbw36kCeJ90tO8qfyC_d2KfRogC_ce022/pub?gid=0&single=true&output=csv" },
-  { label: "June 2026",      summaryUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLyJW3eJIcesJ92qNir7tRLnr7O2cu48rXUV6hhhTgTeicbw36kCeJ90tO8qfyC_d2KfRogC_ce022/pub?gid=1718435140&single=true&output=csv", detailUrl: null },
-  { label: "July 2026",      summaryUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLyJW3eJIcesJ92qNir7tRLnr7O2cu48rXUV6hhhTgTeicbw36kCeJ90tO8qfyC_d2KfRogC_ce022/pub?gid=2134664893&single=true&output=csv", detailUrl: null },
-  { label: "August 2026",    summaryUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLyJW3eJIcesJ92qNir7tRLnr7O2cu48rXUV6hhhTgTeicbw36kCeJ90tO8qfyC_d2KfRogC_ce022/pub?gid=314960525&single=true&output=csv",  detailUrl: null },
-  { label: "September 2026", summaryUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLyJW3eJIcesJ92qNir7tRLnr7O2cu48rXUV6hhhTgTeicbw36kCeJ90tO8qfyC_d2KfRogC_ce022/pub?gid=254654728&single=true&output=csv",  detailUrl: null },
-  { label: "October 2026",   summaryUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLyJW3eJIcesJ92qNir7tRLnr7O2cu48rXUV6hhhTgTeicbw36kCeJ90tO8qfyC_d2KfRogC_ce022/pub?gid=695696972&single=true&output=csv",  detailUrl: null },
-  { label: "November 2026",  summaryUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLyJW3eJIcesJ92qNir7tRLnr7O2cu48rXUV6hhhTgTeicbw36kCeJ90tO8qfyC_d2KfRogC_ce022/pub?gid=1510080080&single=true&output=csv", detailUrl: null },
-  { label: "December 2026",  summaryUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLyJW3eJIcesJ92qNir7tRLnr7O2cu48rXUV6hhhTgTeicbw36kCeJ90tO8qfyC_d2KfRogC_ce022/pub?gid=840071884&single=true&output=csv",  detailUrl: null },
+  { label: "January 2026",   gid: "PASTE_JAN_GID" },
+  { label: "February 2026",  gid: "PASTE_FEB_GID" },
+  { label: "March 2026",     gid: "PASTE_MAR_GID" },
+  { label: "April 2026",     gid: "PASTE_APR_GID" },
+  { label: "May 2026",       gid: "PASTE_MAY_GID" },
+  { label: "June 2026",      gid: "PASTE_JUN_GID" },
+  { label: "July 2026",      gid: "PASTE_JUL_GID" },
+  { label: "August 2026",    gid: "PASTE_AUG_GID" },
+  { label: "September 2026", gid: "PASTE_SEP_GID" },
+  { label: "October 2026",   gid: "PASTE_OCT_GID" },
+  { label: "November 2026",  gid: "PASTE_NOV_GID" },
+  { label: "December 2026",  gid: "PASTE_DEC_GID" },
 ];
 
-let activeIndex = 1;
+// Optional: publish an "Announcements" tab the same way and paste its
+// gid here to enable the popup banner. Leave blank to skip it entirely.
+const ANN_GID = "";
+
+function csvUrlFor(gid) {
+  return PUBLISHED_CSV_BASE + "&gid=" + gid;
+}
+
+// Default to the current real-world month (Jan=0 ... Dec=11), since
+// MONTHS is now the full year in order.
+let activeIndex = Math.min(new Date().getMonth(), MONTHS.length - 1);
 let refreshTimer = null;
-let detailCache = {}; // cache detail data per month
+let detailCache = {}; // cases[] cached per month index, used by the modal
 let currentOfficer = null;
 let currentTab = "pending";
 
@@ -335,15 +354,10 @@ MONTHS.forEach((m, i) => {
 
 function selectMonth(i) {
   activeIndex = i;
-  detailCache = {};
   document.querySelectorAll(".month-btn").forEach((b, idx) => b.classList.toggle("active", idx === i));
   clearInterval(refreshTimer);
-  fetchSummary();
-  if (MONTHS[i].detailUrl) fetchDetail();
-  refreshTimer = setInterval(() => {
-    fetchSummary();
-    if (MONTHS[activeIndex].detailUrl) fetchDetail();
-  }, 60000);
+  fetchMonthData();
+  refreshTimer = setInterval(fetchMonthData, 60000);
 }
 
 function parseCSV(text) {
@@ -359,33 +373,24 @@ function parseCSV(text) {
     return cols;
   });
 }
-
-function num(v) {
-  if (!v || v === "") return 0;
-  const n = Number(String(v).replace(/,/g, "").trim());
-  return isNaN(n) ? 0 : n;
-}
-
 function setStatus(state, msg) {
   document.getElementById("statusText").textContent = msg;
   document.getElementById("statusDot").className = "dot" + (state === "live" ? "" : state === "loading" ? " loading" : " error");
 }
 
-function isEmptySheet(rows) {
-  if (rows.length < 2) return true;
-  return (rows[1] || []).every(v => !v || v.trim() === "" || v.trim() === "0");
-}
-
-// ── SUMMARY
-async function fetchSummary() {
+// ── FETCH + PARSE (one CSV per month — the tab itself, no separate
+//    "summary" sheet needed anymore)
+async function fetchMonthData() {
   const month = MONTHS[activeIndex];
   setStatus("loading", "Loading...");
   document.getElementById("tableWrap").innerHTML = `<div class="state-msg"><div class="spinner"></div>Fetching ${month.label} data…</div>`;
   try {
-    const res = await fetch(month.summaryUrl + "&t=" + Date.now());
+    const res = await fetch(csvUrlFor(month.gid) + "&t=" + Date.now());
     if (!res.ok) throw new Error("HTTP " + res.status);
     const rows = parseCSV(await res.text());
-    renderSummary(rows, month.label, !!month.detailUrl);
+    const cases = extractCases(rows);
+    detailCache[activeIndex] = cases;
+    renderSummary(cases, month.label);
     setStatus("live", "Live");
     document.getElementById("lastUpdated").textContent = "Last updated: " + new Date().toLocaleTimeString();
   } catch (e) {
@@ -394,84 +399,85 @@ async function fetchSummary() {
   }
 }
 
-function renderSummary(rows, monthLabel, hasDetail) {
+// Column layout of each month tab: A=No., B=CPCN, C=By, D=Status, E=Remarks
+// (row 1 = month title, row 2 = headers, data from row 3 down).
+function extractCases(rows) {
+  let dataStart = 0;
+  for (let i = 0; i < Math.min(rows.length, 10); i++) {
+    const r = rows[i].map(c => c.toUpperCase());
+    if (r.some(c => c.includes("STATUS") || c.includes("CPCN"))) { dataStart = i + 1; break; }
+  }
+  const cases = [];
+  for (let i = dataStart; i < rows.length; i++) {
+    const r = rows[i];
+    const no      = r[0] || "";
+    const cpcn    = (r[1] || "").trim();
+    const officer = (r[2] || "").trim().toUpperCase();
+    const status  = (r[3] || "").trim().toUpperCase();
+    const remarks = r[4] || "";
+    // Skip rows that don't have a real CPCN yet (blank or the "X"
+    // placeholder) or no officer — these aren't real cases yet.
+    if (!cpcn || cpcn.toUpperCase() === "X" || !officer) continue;
+    cases.push({ no, cpcn, officer, status, remarks });
+  }
+  return cases;
+}
+
+function renderSummary(cases, monthLabel) {
   document.getElementById("dashSubtitle").textContent = monthLabel + " — CP Summary";
-  if (isEmptySheet(rows)) {
-    ["totalCases","distributed","submitted","signed"].forEach(id => document.getElementById(id).textContent = "—");
-    document.getElementById("officerCount").textContent = "—";
+
+  if (cases.length === 0) {
+    ["totalCases","distributed","submitted","signed"].forEach(id => document.getElementById(id).textContent = "0");
+    document.getElementById("officerCount").textContent = "0 officers";
     document.getElementById("tableWrap").innerHTML = `<div class="no-data-msg">📋 No data yet for ${monthLabel}.<br><span style="font-size:0.8rem;color:#b0b8d0">Data will appear here once the sheet is filled in.</span></div>`;
     return;
   }
-  const s = rows[1] || [];
-  document.getElementById("totalCases").textContent  = num(s[0]) || "0";
-  document.getElementById("distributed").textContent = num(s[1]) || "0";
-  document.getElementById("submitted").textContent   = num(s[2]) || "0";
-  document.getElementById("signed").textContent      = num(s[3]) || "0";
 
-  const officerRows = rows.slice(3).filter(r => r[0] && r[0].trim());
-  document.getElementById("officerCount").textContent = officerRows.length + " officer" + (officerRows.length !== 1 ? "s" : "");
+  // Pending = Distributed. Finished = Submitted or Signed.
+  const distributedCount = cases.filter(c => c.status === "DISTRIBUTED").length;
+  const submittedCount   = cases.filter(c => c.status === "SUBMITTED").length;
+  const signedCount      = cases.filter(c => c.status === "SIGNED").length;
+
+  document.getElementById("totalCases").textContent  = cases.length;
+  document.getElementById("distributed").textContent = distributedCount;
+  document.getElementById("submitted").textContent   = submittedCount;
+  document.getElementById("signed").textContent      = signedCount;
+
+  // Group cases by officer (the "By" column) to build the table.
+  const byOfficer = {};
+  cases.forEach(c => {
+    if (!byOfficer[c.officer]) byOfficer[c.officer] = { pending: 0, finished: 0, total: 0 };
+    byOfficer[c.officer].total++;
+    if (c.status === "DISTRIBUTED") byOfficer[c.officer].pending++;
+    else if (c.status === "SUBMITTED" || c.status === "SIGNED") byOfficer[c.officer].finished++;
+  });
+
+  const officerNames = Object.keys(byOfficer).sort();
+  document.getElementById("officerCount").textContent = officerNames.length + " officer" + (officerNames.length !== 1 ? "s" : "");
 
   let tbody = "";
-  officerRows.forEach(r => {
-    const name     = r[0] || "—";
-    const pending  = num(r[1]);
-    const finished = num(r[2]);
-    const total    = num(r[3]);
-    const pct      = total > 0 ? Math.round((finished / total) * 100) : 0;
-    const clickable = hasDetail
-      ? `<span class="officer-name" onclick="openModal('${name}')">${name}</span>`
-      : `<span style="font-size:1rem;font-weight:600;color:#1a1f2e">${name}</span>`;
+  officerNames.forEach(name => {
+    const o = byOfficer[name];
+    const pct = o.total > 0 ? Math.round((o.finished / o.total) * 100) : 0;
     tbody += `
       <tr>
-        <td>${clickable}</td>
-        <td><span class="num num-pending">${pending}</span></td>
+        <td><span class="officer-name" onclick="openModal('${name}')">${name}</span></td>
+        <td><span class="num num-pending">${o.pending}</span></td>
         <td>
           <div class="progress-wrap">
-            <span class="num num-finished">${finished}</span>
+            <span class="num num-finished">${o.finished}</span>
             <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
           </div>
         </td>
-        <td><span class="num num-total">${total}</span></td>
+        <td><span class="num num-total">${o.total}</span></td>
       </tr>`;
   });
-
-  const hint = hasDetail ? `<tr><td colspan="4" style="padding:0.5rem 1.5rem;font-size:0.72rem;color:#9ba3be;border-top:1px solid #f0f2f7;">💡 Click an officer's name to view their case details</td></tr>` : "";
+  const hint = `<tr><td colspan="4" style="padding:0.5rem 1.5rem;font-size:0.72rem;color:#9ba3be;border-top:1px solid #f0f2f7;">💡 Click an officer's name to view their case details</td></tr>`;
   document.getElementById("tableWrap").innerHTML = `
     <table>
       <thead><tr><th>Action Officer</th><th>Pending</th><th>Finished</th><th>Total</th></tr></thead>
       <tbody>${tbody}${hint}</tbody>
     </table>`;
-}
-
-// ── DETAIL
-async function fetchDetail() {
-  const month = MONTHS[activeIndex];
-  if (!month.detailUrl) return;
-  try {
-    const res = await fetch(month.detailUrl + "&t=" + Date.now());
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    const rows = parseCSV(await res.text());
-    // Find header row (has "Action Officer" or "Status")
-    let dataStart = 0;
-    for (let i = 0; i < Math.min(rows.length, 10); i++) {
-      const r = rows[i].map(c => c.toUpperCase());
-      if (r.some(c => c.includes("STATUS") || c.includes("ACTION"))) { dataStart = i + 1; break; }
-    }
-    const cases = [];
-    for (let i = dataStart; i < rows.length; i++) {
-      const r = rows[i];
-      // B=col1(idx0 in CSV but sheet col B = CSV col 1), C=idx2, D=idx3, E=idx4
-      // CSV: col0=empty/A, col1=B(No), col2=C(CPCN), col3=D(Officer), col4=E(Status)
-      const no      = r[1] || "";
-      const cpcn    = r[2] || "";
-      const officer = (r[3] || "").trim().toUpperCase();
-      const status  = (r[4] || "").trim().toUpperCase();
-      if (cpcn && officer) cases.push({ no, cpcn, officer, status });
-    }
-    detailCache[activeIndex] = cases;
-  } catch (e) {
-    console.warn("Detail fetch failed:", e.message);
-  }
 }
 
 // ── MODAL
@@ -481,7 +487,6 @@ function statusBadge(status) {
   if (status === "DISTRIBUTED") return `<span class="status-badge badge-distributed">Distributed</span>`;
   return `<span class="status-badge badge-other">${status || "—"}</span>`;
 }
-
 function openModal(officerName) {
   currentOfficer = officerName.toUpperCase();
   currentTab = "pending";
@@ -493,20 +498,14 @@ function openModal(officerName) {
   document.getElementById("modalOverlay").classList.add("open");
   document.body.style.overflow = "hidden";
 }
-
 function renderModalTab() {
   const cases = detailCache[activeIndex] || [];
   const mine = cases.filter(c => c.officer === currentOfficer);
-
-  // Pending = DISTRIBUTED (not yet submitted/signed)
-  const pending  = mine.filter(c => c.status === "DISTRIBUTED");
-  // Done = SUBMITTED or SIGNED
-  const done     = mine.filter(c => c.status === "SUBMITTED" || c.status === "SIGNED");
-
+  const pending = mine.filter(c => c.status === "DISTRIBUTED");
+  const done    = mine.filter(c => c.status === "SUBMITTED" || c.status === "SIGNED");
   document.getElementById("mPending").textContent = pending.length;
   document.getElementById("mDone").textContent    = done.length;
   document.getElementById("mTotal").textContent   = mine.length;
-
   const list = currentTab === "pending" ? pending : done;
   if (list.length === 0) {
     document.getElementById("modalBody").innerHTML =
@@ -522,15 +521,12 @@ function renderModalTab() {
   ).join("");
   document.getElementById("modalBody").innerHTML = `<ul class="modal-list">${items}</ul>`;
 }
-
 function closeModal() {
   document.getElementById("modalOverlay").classList.remove("open");
   document.body.style.overflow = "";
 }
-
 document.getElementById("modalClose").addEventListener("click", closeModal);
 document.getElementById("modalOverlay").addEventListener("click", e => { if (e.target === document.getElementById("modalOverlay")) closeModal(); });
-
 document.getElementById("tabPending").addEventListener("click", () => {
   currentTab = "pending";
   document.getElementById("tabPending").classList.add("active");
@@ -544,27 +540,22 @@ document.getElementById("tabDone").addEventListener("click", () => {
   renderModalTab();
 });
 
-// ── ANNOUNCEMENTS
-const ANN_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLyJW3eJIcesJ92qNir7tRLnr7O2cu48rXUV6hhhTgTeicbw36kCeJ90tO8qfyC_d2KfRogC_ce022/pub?gid=1529163712&single=true&output=csv";
-
+// ── ANNOUNCEMENTS (optional — only runs if ANN_GID is set above)
 async function fetchAnnouncements() {
+  if (!ANN_GID) return;
   try {
-    const res = await fetch(ANN_URL + "&t=" + Date.now());
+    const res = await fetch(csvUrlFor(ANN_GID) + "&t=" + Date.now());
     if (!res.ok) throw new Error("HTTP " + res.status);
     const rows = parseCSV(await res.text());
-
     // Expected sheet columns: A=Title, B=Message, C=Date (row 1 = header, row 2+ = entries)
     const entries = rows.slice(1).filter(r => r[0] && r[0].trim() !== "");
-
     if (entries.length === 0) return; // no announcements, don't show banner
-
     const html = entries.map(r => `
       <div class="ann-item">
         <div class="ann-item-title">${r[0] || ""}</div>
         ${r[1] ? `<div class="ann-item-body">${r[1]}</div>` : ""}
         ${r[2] ? `<div class="ann-item-date">📅 ${r[2]}</div>` : ""}
       </div>`).join("");
-
     document.getElementById("annBody").innerHTML = html;
     document.getElementById("annOverlay").classList.add("open");
     document.body.style.overflow = "hidden";
@@ -572,19 +563,16 @@ async function fetchAnnouncements() {
     console.warn("Announcements fetch failed:", e.message);
   }
 }
-
 function closeAnn() {
   document.getElementById("annOverlay").classList.remove("open");
   document.body.style.overflow = "";
 }
-
 document.getElementById("annClose").addEventListener("click", closeAnn);
 document.getElementById("annDismiss").addEventListener("click", closeAnn);
 document.getElementById("annOverlay").addEventListener("click", e => {
   if (e.target === document.getElementById("annOverlay")) closeAnn();
 });
-
-// Load announcements on start
+// Load announcements on start (no-op if ANN_GID is blank)
 fetchAnnouncements();
 
 // ── INIT
